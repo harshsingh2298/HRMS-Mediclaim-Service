@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body style="font-family: Arial; background:#f4f6f8; padding:20px;">
+
+<table width="650" align="center" style="background:white; padding:24px; border-radius:8px;">
+
+    <tr>
+        <td style="font-size:18px; font-weight:bold;">
+            CMS Digital Lounge – HR Department
+        </td>
+    </tr>
+
+    <tr><td height="20"></td></tr>
+
+    <tr>
+        <td>Dear <b th:text="${name}">Employee</b>,</td>
+    </tr>
+
+    <tr><td height="10"></td></tr>
+
+    <tr>
+        <td>
+            During review of your Mediclaim enrollment, the following dependent(s)
+            have exceeded the maximum eligible age:
+        </td>
+    </tr>
+
+    <tr><td height="15"></td></tr>
+
+    <tr>
+        <td>
+            <table width="100%" border="1" cellpadding="8" style="border-collapse:collapse;">
+                <tr style="background:#fee2e2; font-weight:bold;">
+                    <td>Name</td><td>Relation</td><td>Age</td>
+                </tr>
+
+                <tr th:each="d : ${invalidDependents}">
+                    <td th:text="${d.name}"></td>
+                    <td th:text="${d.relation}"></td>
+                    <td th:text="${d.age}"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr><td height="15"></td></tr>
+
+    <tr>
+        <td style="color:#b91c1c;">
+            These dependents will not be covered in the upcoming Mediclaim renewal.
+            Your policy will continue with remaining eligible dependents and yourself.
+            Premium will be recalculated accordingly.
+        </td>
+    </tr>
+
+    <tr><td height="20"></td></tr>
+
+    <tr>
+        <td>
+            Regards,<br>
+            <b>HR Team</b><br>
+            CMS Digital Lounge
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mediclaim Enrollment Submitted</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif; background:#f4f6f8; padding:20px;">
+
+<table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+        <td align="center">
+
+            <table width="650" style="background:#ffffff; border-radius:8px; padding:24px;">
+
+                <tr>
+                    <td style="font-size:18px; font-weight:bold; color:#0f172a;">
+                        CMS Digital Lounge – HR Department
+                    </td>
+                </tr>
+
+                <tr><td height="20"></td></tr>
+
+                <tr>
+                    <td style="font-size:14px; color:#334155;">
+                        Dear <b th:text="${name}">Employee</b>,
+                    </td>
+                </tr>
+
+                <tr><td height="14"></td></tr>
+
+                <tr>
+                    <td style="font-size:14px; color:#334155; line-height:1.6;">
+                        Your Mediclaim enrollment has been <b style="color:#2563eb;">successfully submitted</b>.
+                        Please review your dependent details below.
+                    </td>
+                </tr>
+
+                <tr><td height="18"></td></tr>
+
+                <!-- DEPENDENTS TABLE -->
+                <tr>
+                    <td>
+                        <table width="100%" border="1" cellpadding="8" cellspacing="0"
+                               style="border-collapse:collapse; font-size:13px;">
+
+                            <tr style="background:#f1f5f9; font-weight:bold;">
+                                <td>Name</td>
+                                <td>Relation</td>
+                                <td>Age</td>
+                            </tr>
+
+                            <tr th:each="d : ${dependents}">
+                                <td th:text="${d.name}">Name</td>
+                                <td th:text="${d.relation}">Relation</td>
+                                <td th:text="${d.age}">Age</td>
+                            </tr>
+
+                            <tr th:if="${#lists.isEmpty(dependents)}">
+                                <td colspan="3" style="text-align:center;">No dependents added</td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+
+                <tr><td height="18"></td></tr>
+
+                <tr>
+                    <td style="font-size:14px; color:#334155;">
+                        <b>Total Annual Premium:</b>
+                        <span style="color:#16a34a; font-weight:bold;">
+₹ <span th:text="${premium}">0</span>
+</span>
+                    </td>
+                </tr>
+
+                <tr><td height="22"></td></tr>
+
+                <tr>
+                    <td style="font-size:13px; color:#475569;">
+                        Regards,<br>
+                        <b>HR Team</b><br>
+                        CMS Digital Lounge
+                    </td>
+                </tr>
+
+                <tr><td height="10"></td></tr>
+
+                <tr>
+                    <td style="font-size:11px; color:#94a3b8;">
+                        *This is an automated mail. Please do not reply.
+                    </td>
+                </tr>
+
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
